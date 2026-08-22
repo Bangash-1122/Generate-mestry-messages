@@ -11,7 +11,7 @@ export async function POST(request: Request){
 
     const session = await getServerSession(authOptions);
     const user: User = session?.user as User;
-    
+
 
     if(!session || !user){
     return Response.json(
@@ -28,11 +28,11 @@ export async function POST(request: Request){
     try {
         const updatedUser = await UserModel.findByIdAndUpdate(
             userId,
-            { 
-                isAcceptingMessages: acceptMessages 
+            {
+                isAcceptingMessages: acceptMessages
             },
-            { 
-                new: true 
+            {
+                new: true
             }
         )
         if(!updatedUser){
@@ -64,7 +64,7 @@ export async function POST(request: Request){
             { status: 500 }
         )
     }
-    
+
 }
 
 export async function GET(request: Request){
@@ -72,7 +72,7 @@ export async function GET(request: Request){
 
     const session = await getServerSession(authOptions);
     const user: User = session?.user as User;
-    
+
 
     if(!session || !user){
     return Response.json(
